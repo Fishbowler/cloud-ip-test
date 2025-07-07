@@ -20,6 +20,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Use debug signing for public builds - allows anyone to build and install
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {

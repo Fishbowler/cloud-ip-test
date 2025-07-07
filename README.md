@@ -53,18 +53,42 @@ app/
 
 ### Prerequisites
 - Android Studio or VS Code with Android development setup
-- Java Development Kit (JDK) 8 or higher
+- Java Development Kit (JDK) 17 or higher
 - Android SDK
 
-### Build the Project
+### Quick Build (Recommended)
 ```bash
-./gradlew build
+./build.sh
+```
+
+### Manual Build Commands
+```bash
+# Build release APK
+./gradlew assembleRelease
+
+# Build debug APK
+./gradlew assembleDebug
+
+# Clean build
+./gradlew clean build
 ```
 
 ### Install on Device/Emulator
 ```bash
+# Install release APK
+adb install app/build/outputs/apk/release/app-release.apk
+
+# Or install debug APK
 ./gradlew installDebug
 ```
+
+### Signing Configuration
+This project uses debug signing for release builds, making it easy for anyone to build and install the APK without managing private keys. This is suitable for:
+- Open source projects
+- Internal/enterprise distribution
+- Testing and development
+
+**Note**: This APK cannot be published to Google Play Store due to debug signing.
 
 ## Customization
 
