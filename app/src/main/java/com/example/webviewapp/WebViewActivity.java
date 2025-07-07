@@ -8,20 +8,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class WebViewActivity extends AppCompatActivity {
 
+    private WebView webView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
 
-        WebView webView = findViewById(R.id.webView);
+        webView = findViewById(R.id.webView);
         
         // Get URL and title from intent
         String url = getIntent().getStringExtra("url");
         String title = getIntent().getStringExtra("title");
         
-        // Set title
+        // Set title and enable back button in action bar
         if (title != null) {
             setTitle(title);
+        }
+        
+        // Enable back button in action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
         // Configure WebView
@@ -39,6 +47,24 @@ public class WebViewActivity extends AppCompatActivity {
         // Load the URL
         if (url != null) {
             webView.loadUrl(url);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        // Handle action bar back button click
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        // If WebView can go back, go back in WebView
+        if (webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            // Otherwise, close the activity and return to main screen
+            super.onBackPressed();
         }
     }
 }
