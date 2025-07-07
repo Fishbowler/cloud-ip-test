@@ -40,6 +40,9 @@ public class WebViewActivity extends AppCompatActivity {
         webSettings.setUseWideViewPort(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
+        
+        // Allow HTTP traffic and mixed content
+        webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
 
         // Set WebViewClient to handle navigation within the WebView
         webView.setWebViewClient(new WebViewClient());
