@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-                intent.putExtra("url", "http://endpoint-labs.brubank.com/");
+                intent.putExtra("url", "https://endpoint-labs.brubank.com/");
                 intent.putExtra("title", "Endpoint");
                 startActivity(intent);
             }
