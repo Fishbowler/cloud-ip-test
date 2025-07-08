@@ -1,0 +1,13 @@
+appId: com.example.webviewapp
+env:
+  IP_ADDRESS: ${OVERRIDE_IP_ADDRESS || '34.127.79.8'} # Default to the IP used by Android Emulators in Maestro Cloud
+---
+- launchApp
+
+- tapOn: "MY IP"
+- assertVisible: ${IP_ADDRESS}
+- tapOn:
+      text: "Navigate up"
+
+- tapOn: "ENDPOINT"
+- assertNotVisible: 'The request is blocked.*'
